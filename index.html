@@ -69,7 +69,7 @@
   /* ── NAV ── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    padding: 22px 48px;
+    padding: 15px 48px;
     display: flex; align-items: center; justify-content: space-between;
     background: rgba(249,247,242,0.88);
     backdrop-filter: blur(12px);
@@ -83,21 +83,15 @@
   }
 
   .logo {
-    font-family: var(--font-logo);
-    font-weight: 600;
-    font-size: 1.5rem;
-    letter-spacing: 0.12em;
-    color: var(--terra);
+    display: flex;
+    align-items: center;
+    height: 40px;
     text-decoration: none;
-    position: relative;
   }
-  .logo span {
-    color: var(--salvia);
-    font-style: italic;
-    font-family: var(--font-corpo);
-    font-size: 0.75em;
-    letter-spacing: 0.05em;
-    vertical-align: super;
+  .logo img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
   }
 
   .nav-links {
@@ -114,20 +108,9 @@
     transition: color var(--transition);
     position: relative;
   }
-  .nav-links a::after {
-    content: '';
-    position: absolute; bottom: -3px; left: 0; right: 0;
-    height: 1px; background: var(--salvia);
-    transform: scaleX(0);
-    transition: transform var(--transition);
-    transform-origin: left;
-  }
   .nav-links a:hover { color: var(--terra); }
-  .nav-links a:hover::after { transform: scaleX(1); }
 
-  .nav-actions {
-    display: flex; align-items: center; gap: 18px;
-  }
+  .nav-actions { display: flex; align-items: center; gap: 18px; }
   .cart-btn {
     background: var(--salvia);
     color: white;
@@ -140,19 +123,8 @@
     text-transform: uppercase;
     cursor: none;
     border-radius: 2px;
-    transition: background var(--transition), transform var(--transition);
-    position: relative; overflow: hidden;
+    transition: background var(--transition);
   }
-  .cart-btn::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: var(--terra);
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform var(--transition);
-  }
-  .cart-btn:hover::before { transform: scaleX(1); }
-  .cart-btn span { position: relative; z-index: 1; }
   .cart-badge {
     background: var(--mostarda);
     color: var(--terra);
@@ -196,14 +168,8 @@
     color: var(--salvia);
     margin-bottom: 28px;
     display: flex; align-items: center; gap: 12px;
-    animation: fadeUp 1s ease 0.3s both;
   }
-  .hero-eyebrow::before {
-    content: '';
-    width: 32px; height: 1px;
-    background: var(--salvia);
-    display: inline-block;
-  }
+  .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--salvia); display: inline-block; }
 
   .hero-title {
     font-family: var(--font-corpo);
@@ -212,19 +178,8 @@
     line-height: 1.08;
     color: var(--terra);
     margin-bottom: 32px;
-    animation: fadeUp 1s ease 0.4s both;
   }
-  .hero-title em {
-    font-style: italic;
-    color: var(--argila);
-    position: relative;
-  }
-  .hero-title em::after {
-    content: '';
-    position: absolute; bottom: 4px; left: 0; right: 0;
-    height: 2px; background: var(--mostarda);
-    opacity: 0.6;
-  }
+  .hero-title em { font-style: italic; color: var(--argila); position: relative; }
 
   .hero-subtitle {
     font-size: 1.05rem;
@@ -232,13 +187,9 @@
     color: var(--texto-leve);
     max-width: 420px;
     margin-bottom: 48px;
-    animation: fadeUp 1s ease 0.5s both;
   }
 
-  .hero-ctas {
-    display: flex; gap: 16px; flex-wrap: wrap;
-    animation: fadeUp 1s ease 0.6s both;
-  }
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
 
   .btn-primary {
     background: var(--terra);
@@ -279,98 +230,18 @@
     position: relative;
     background: var(--cinza-suave);
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     animation: fadeIn 1.2s ease 0.2s both;
   }
 
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-  .hero-img-placeholder {
-    width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
-    background: linear-gradient(135deg, var(--cinza-suave) 0%, var(--argila) 100%);
-    position: relative;
-    overflow: hidden;
-  }
-
-  /* Organic shape decorations */
-  .hero-shape-1 {
-    position: absolute;
-    width: 380px; height: 480px;
-    background: var(--argila);
-    border-radius: 60% 40% 55% 45% / 50% 45% 55% 50%;
-    opacity: 0.35;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    animation: morphShape 8s ease-in-out infinite;
-  }
-  .hero-shape-2 {
-    position: absolute;
-    width: 280px; height: 360px;
-    background: var(--salvia);
-    border-radius: 40% 60% 45% 55% / 55% 50% 45% 50%;
-    opacity: 0.2;
-    top: 50%; left: 50%;
-    transform: translate(-40%, -55%);
-    animation: morphShape 10s ease-in-out 2s infinite reverse;
-  }
-  .hero-shape-3 {
-    position: absolute;
-    width: 200px; height: 240px;
-    background: var(--mostarda);
-    border-radius: 50% 50% 40% 60% / 50% 60% 40% 50%;
-    opacity: 0.18;
-    bottom: 80px; right: 60px;
-    animation: morphShape 7s ease-in-out 1s infinite;
-  }
-
-  @keyframes morphShape {
-    0%, 100% { border-radius: 60% 40% 55% 45% / 50% 45% 55% 50%; }
-    50% { border-radius: 40% 60% 45% 55% / 55% 50% 45% 50%; }
-  }
-
-  .hero-product-card {
-    position: relative; z-index: 2;
-    background: var(--offwhite);
-    padding: 28px;
-    border-radius: 4px;
-    width: 220px;
-    box-shadow: 0 24px 60px rgba(107,79,58,0.15);
-    transform: rotate(-2deg);
-    animation: floatCard 5s ease-in-out infinite;
-  }
-  @keyframes floatCard {
-    0%, 100% { transform: rotate(-2deg) translateY(0); }
-    50% { transform: rotate(-2deg) translateY(-12px); }
-  }
-  .hero-product-img {
-    width: 100%; aspect-ratio: 3/4;
-    background: var(--cinza-suave);
-    border-radius: 2px;
-    margin-bottom: 16px;
-    display: flex; align-items: center; justify-content: center;
-    overflow: hidden;
-    position: relative;
-  }
-  .hero-product-img img {
-    width: 100%; height: 100%;
+  .hero-full-img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-  }
-  .hero-product-name {
-    font-family: var(--font-logo);
-    font-size: 0.82rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    color: var(--terra);
-    margin-bottom: 4px;
-  }
-  .hero-product-price {
-    font-family: var(--font-corpo);
-    font-size: 0.9rem;
-    color: var(--texto-leve);
-    font-style: italic;
   }
 
   .hero-tag {
@@ -384,10 +255,9 @@
     text-transform: uppercase;
     padding: 6px 14px;
     border-radius: 2px;
-    top: 60px; left: 40px;
+    top: 40px; right: 40px;
     z-index: 3;
     transform: rotate(2deg);
-    animation: fadeUp 1s ease 0.8s both;
   }
 
   /* ── MANIFESTO ── */
@@ -396,15 +266,6 @@
     background: var(--terra);
     position: relative;
     overflow: hidden;
-  }
-  .manifesto::before {
-    content: '';
-    position: absolute;
-    width: 600px; height: 600px;
-    border-radius: 50%;
-    background: var(--argila);
-    opacity: 0.06;
-    top: -200px; right: -200px;
   }
   .manifesto-inner {
     max-width: 800px;
@@ -423,9 +284,6 @@
     margin-bottom: 40px;
     display: flex; align-items: center; justify-content: center; gap: 16px;
   }
-  .manifesto-label::before, .manifesto-label::after {
-    content: ''; width: 40px; height: 1px; background: var(--mostarda); opacity: 0.5;
-  }
   .manifesto h2 {
     font-family: var(--font-corpo);
     font-size: clamp(1.8rem, 3.5vw, 3rem);
@@ -433,10 +291,6 @@
     color: var(--offwhite);
     line-height: 1.45;
     margin-bottom: 40px;
-  }
-  .manifesto h2 em {
-    font-style: italic;
-    color: var(--argila);
   }
   .manifesto p {
     font-size: 1rem;
@@ -459,12 +313,6 @@
     transition: background var(--transition);
   }
   .pillar:last-child { border-right: none; }
-  .pillar:hover { background: rgba(249,247,242,0.06); }
-  .pillar-icon {
-    width: 44px; height: 44px;
-    margin-bottom: 24px;
-    opacity: 0.8;
-  }
   .pillar h3 {
     font-family: var(--font-logo);
     font-size: 0.85rem;
@@ -474,843 +322,89 @@
     color: var(--mostarda);
     margin-bottom: 12px;
   }
-  .pillar p {
-    font-size: 0.88rem;
-    line-height: 1.7;
-    color: rgba(249,247,242,0.55);
-    margin: 0;
-  }
+  .pillar p { font-size: 0.88rem; line-height: 1.7; color: rgba(249,247,242,0.55); margin: 0; }
 
   /* ── COLECAO ── */
-  .colecao {
-    padding: 120px 80px;
-  }
-  .section-header {
-    display: flex; align-items: flex-end; justify-content: space-between;
-    margin-bottom: 72px;
-  }
-  .section-label {
-    font-family: var(--font-logo);
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--salvia);
-    margin-bottom: 16px;
-    display: flex; align-items: center; gap: 12px;
-  }
-  .section-label::before { content: ''; width: 24px; height: 1px; background: var(--salvia); }
-  .section-title {
-    font-family: var(--font-corpo);
-    font-size: clamp(2rem, 3.5vw, 3.2rem);
-    font-weight: 400;
-    color: var(--terra);
-    line-height: 1.15;
-  }
-  .section-title em { font-style: italic; color: var(--argila); }
-  .section-link {
-    font-family: var(--font-logo);
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--texto-leve);
-    text-decoration: none;
-    border-bottom: 1px solid var(--argila);
-    padding-bottom: 3px;
-    transition: color var(--transition), border-color var(--transition);
-    white-space: nowrap;
-    margin-bottom: 8px;
-  }
-  .section-link:hover { color: var(--terra); border-color: var(--terra); }
+  .colecao { padding: 120px 80px; }
+  .section-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 72px; }
+  .section-label { font-family: var(--font-logo); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--salvia); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+  .section-title { font-family: var(--font-corpo); font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 400; color: var(--terra); line-height: 1.15; }
+  .section-link { font-family: var(--font-logo); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--texto-leve); text-decoration: none; border-bottom: 1px solid var(--argila); padding-bottom: 3px; transition: color var(--transition); }
 
-  .products-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-  }
+  .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .product-card { position: relative; cursor: none; }
+  .product-img-wrap { aspect-ratio: 3/4; overflow: hidden; background: var(--cinza-suave); border-radius: 2px; margin-bottom: 20px; position: relative; }
+  .product-img-bg { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .product-img-bg img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+  .product-card:hover img { transform: scale(1.05); }
 
-  .product-card {
-    position: relative;
-    cursor: none;
-  }
-
-  .product-img-wrap {
-    aspect-ratio: 3/4;
-    overflow: hidden;
-    background: var(--cinza-suave);
-    border-radius: 2px;
-    margin-bottom: 20px;
-    position: relative;
-  }
-
-  .product-img-bg {
-    width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
-    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    position: relative;
-    overflow: hidden;
-  }
-  .product-img-bg img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-  }
-
-  .product-card:hover .product-img-bg { transform: scale(1.04); }
-
-  .product-actions {
-    position: absolute;
-    bottom: 16px; left: 16px; right: 16px;
-    display: flex; gap: 8px;
-    transform: translateY(20px);
-    opacity: 0;
-    transition: all var(--transition);
-  }
+  .product-actions { position: absolute; bottom: 16px; left: 16px; right: 16px; display: flex; gap: 8px; transform: translateY(20px); opacity: 0; transition: all var(--transition); }
   .product-card:hover .product-actions { transform: translateY(0); opacity: 1; }
 
-  .btn-add {
-    flex: 1;
-    background: var(--terra);
-    color: var(--offwhite);
-    border: none;
-    padding: 12px;
-    font-family: var(--font-logo);
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    cursor: none;
-    border-radius: 2px;
-    transition: background var(--transition);
-  }
-  .btn-add:hover { background: var(--salvia); }
+  .btn-add { flex: 1; background: var(--terra); color: var(--offwhite); border: none; padding: 12px; font-family: var(--font-logo); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; cursor: none; border-radius: 2px; }
+  .btn-wish { background: var(--offwhite); border: 1px solid var(--argila); padding: 12px 14px; cursor: none; border-radius: 2px; display: flex; align-items: center; }
 
-  .btn-wish {
-    background: var(--offwhite);
-    border: 1px solid var(--argila);
-    padding: 12px 14px;
-    cursor: none;
-    border-radius: 2px;
-    transition: all var(--transition);
-    display: flex; align-items: center;
-  }
-  .btn-wish:hover { background: var(--argila); }
-
-  .product-badge {
-    position: absolute; top: 12px; left: 12px;
-    background: var(--mostarda);
-    color: var(--terra);
-    font-family: var(--font-logo);
-    font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 5px 10px;
-    border-radius: 2px;
-    z-index: 2;
-  }
-
-  .product-info {}
-  .product-category {
-    font-family: var(--font-logo);
-    font-size: 0.68rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--salvia);
-    margin-bottom: 6px;
-  }
-  .product-name {
-    font-family: var(--font-corpo);
-    font-size: 1rem;
-    font-weight: 400;
-    color: var(--terra);
-    margin-bottom: 8px;
-    line-height: 1.4;
-  }
-  .product-age {
-    font-family: var(--font-logo);
-    font-size: 0.7rem;
-    color: var(--texto-leve);
-    margin-bottom: 10px;
-    letter-spacing: 0.05em;
-  }
-  .product-footer {
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .product-price {
-    font-family: var(--font-corpo);
-    font-size: 1.05rem;
-    color: var(--texto);
-    font-weight: 500;
-  }
-  .product-price .original {
-    font-size: 0.82rem;
-    color: var(--texto-leve);
-    text-decoration: line-through;
-    margin-right: 6px;
-  }
-  .product-colors {
-    display: flex; gap: 5px;
-  }
-  .color-dot {
-    width: 10px; height: 10px;
-    border-radius: 50%;
-    border: 1.5px solid rgba(58,48,40,0.15);
-  }
+  .product-badge { position: absolute; top: 12px; left: 12px; background: var(--mostarda); color: var(--terra); font-family: var(--font-logo); font-size: 0.62rem; font-weight: 700; text-transform: uppercase; padding: 5px 10px; border-radius: 2px; z-index: 2; }
+  .product-category { font-family: var(--font-logo); font-size: 0.68rem; font-weight: 500; text-transform: uppercase; color: var(--salvia); margin-bottom: 6px; }
+  .product-name { font-family: var(--font-corpo); font-size: 1rem; font-weight: 400; color: var(--terra); margin-bottom: 8px; }
+  .product-price { font-family: var(--font-corpo); font-size: 1.05rem; color: var(--texto); font-weight: 500; }
 
   /* ── DESTAQUE ESPECIAL ── */
-  .destaque {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin: 0 80px 120px;
-    background: var(--cinza-suave);
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  .destaque-img {
-    aspect-ratio: 1;
-    background: var(--cinza-suave);
-    display: flex; align-items: center; justify-content: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .destaque-img img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-  }
-
-  .destaque-content {
-    padding: 72px 64px;
-    display: flex; flex-direction: column; justify-content: center;
-  }
-  .destaque-content .section-label { margin-bottom: 24px; }
-  .destaque-content h2 {
-    font-family: var(--font-corpo);
-    font-size: clamp(1.8rem, 3vw, 2.8rem);
-    font-weight: 400;
-    color: var(--terra);
-    line-height: 1.2;
-    margin-bottom: 24px;
-  }
-  .destaque-content h2 em { font-style: italic; color: var(--argila); }
-  .destaque-content p {
-    font-size: 0.95rem;
-    line-height: 1.8;
-    color: var(--texto-leve);
-    margin-bottom: 40px;
-  }
-  .destaque-price {
-    font-family: var(--font-corpo);
-    font-size: 1.5rem;
-    color: var(--terra);
-    font-weight: 500;
-    margin-bottom: 32px;
-  }
-  .destaque-price span {
-    font-size: 0.9rem;
-    color: var(--texto-leve);
-    font-style: italic;
-    font-weight: 400;
-  }
+  .destaque { display: grid; grid-template-columns: 1fr 1fr; margin: 0 80px 120px; background: var(--cinza-suave); border-radius: 4px; overflow: hidden; }
+  .destaque-img { aspect-ratio: 1; }
+  .destaque-img img { width: 100%; height: 100%; object-fit: cover; }
+  .destaque-content { padding: 72px 64px; display: flex; flex-direction: column; justify-content: center; }
 
   /* ── TECIDOS ── */
-  .tecidos {
-    padding: 0 80px 120px;
-  }
-  .tecidos-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 2px;
-    background: var(--cinza-suave);
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  .tecido-item {
-    padding: 48px;
-    background: var(--offwhite);
-    transition: background var(--transition);
-    display: flex; flex-direction: column;
-  }
-  .tecido-item:hover { background: var(--cinza-suave); }
-  .tecido-item.featured {
-    padding: 64px 56px;
-    background: var(--argila);
-  }
-  .tecido-item.featured:hover { background: var(--argila); }
-  .tecido-icon {
-    width: 48px; height: 48px; margin-bottom: 32px;
-  }
-  .tecido-item.featured .tecido-icon svg { stroke: var(--terra); }
-  .tecido-item h3 {
-    font-family: var(--font-corpo);
-    font-size: 1.3rem;
-    font-weight: 400;
-    color: var(--terra);
-    margin-bottom: 16px;
-    line-height: 1.3;
-  }
-  .tecido-item.featured h3 { font-size: 1.6rem; }
-  .tecido-item p {
-    font-size: 0.88rem;
-    line-height: 1.75;
-    color: var(--texto-leve);
-    flex: 1;
-  }
-  .tecido-item.featured p { color: var(--terra); opacity: 0.8; }
-  .tecido-cert {
-    display: flex; align-items: center; gap: 8px;
-    margin-top: 28px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(107,79,58,0.15);
-    font-family: var(--font-logo);
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--salvia);
-  }
-
-  /* ── DEPOIMENTOS ── */
-  .depoimentos {
-    padding: 120px 80px;
-    background: var(--cinza-suave);
-    position: relative;
-    overflow: hidden;
-  }
-  .depoimentos::before {
-    content: '"';
-    position: absolute;
-    font-family: var(--font-corpo);
-    font-size: 400px;
-    color: var(--argila);
-    opacity: 0.08;
-    top: -60px; left: 40px;
-    line-height: 1;
-    pointer-events: none;
-  }
-  .depoimentos-inner { max-width: 760px; }
-  .depoimentos-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    margin-top: 64px;
-  }
-  .depoimento-card {
-    background: var(--offwhite);
-    padding: 40px;
-    border-radius: 4px;
-    border-bottom: 3px solid var(--argila);
-    transition: transform var(--transition), box-shadow var(--transition);
-  }
-  .depoimento-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(107,79,58,0.1); }
-  .depoimento-texto {
-    font-family: var(--font-corpo);
-    font-size: 0.95rem;
-    font-style: italic;
-    line-height: 1.8;
-    color: var(--texto);
-    margin-bottom: 28px;
-  }
-  .depoimento-autor {
-    display: flex; align-items: center; gap: 14px;
-  }
-  .autor-avatar {
-    width: 40px; height: 40px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--argila), var(--salvia));
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--font-logo);
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: white;
-    flex-shrink: 0;
-  }
-  .autor-nome {
-    font-family: var(--font-logo);
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--terra);
-    margin-bottom: 2px;
-  }
-  .autor-info {
-    font-size: 0.75rem;
-    color: var(--texto-leve);
-    font-style: italic;
-  }
-  .stars {
-    display: flex; gap: 3px;
-    margin-bottom: 20px;
-  }
-  .star { color: var(--mostarda); font-size: 0.85rem; }
+  .tecidos { padding: 0 80px 120px; }
+  .tecidos-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2px; background: var(--cinza-suave); border-radius: 4px; overflow: hidden; }
+  .tecido-item { padding: 48px; background: var(--offwhite); transition: background var(--transition); display: flex; flex-direction: column; }
+  .tecido-item.featured { padding: 64px 56px; background: var(--argila); }
 
   /* ── CATEGORIAS ── */
-  .categorias {
-    padding: 120px 80px 0;
-  }
-  .cat-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-top: 64px;
-  }
-  .cat-card {
-    position: relative;
-    overflow: hidden;
-    border-radius: 4px;
-    aspect-ratio: 3/2;
-    cursor: none;
-  }
-  .cat-card.large { aspect-ratio: auto; grid-row: span 2; }
-  .cat-bg {
-    width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
-    transition: transform 0.6s ease;
-    position: relative;
-  }
-  .cat-bg img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    position: absolute;
-  }
-
-  .cat-card:hover .cat-bg { transform: scale(1.06); }
-  .cat-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(58,48,40,0.7) 0%, transparent 60%);
-    z-index: 1;
-    transition: background var(--transition);
-  }
-  .cat-card:hover .cat-overlay { background: linear-gradient(to top, rgba(58,48,40,0.8) 0%, rgba(58,48,40,0.1) 70%); }
-  .cat-content {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    padding: 32px;
-    z-index: 2;
-  }
-  .cat-name {
-    font-family: var(--font-corpo);
-    font-size: 1.4rem;
-    font-weight: 400;
-    color: var(--offwhite);
-    margin-bottom: 6px;
-    line-height: 1.2;
-  }
-  .cat-card.large .cat-name { font-size: 2rem; }
-  .cat-count {
-    font-family: var(--font-logo);
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(249,247,242,0.65);
-  }
-  .cat-arrow {
-    position: absolute; top: 24px; right: 24px;
-    width: 36px; height: 36px;
-    background: rgba(249,247,242,0.15);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    z-index: 2;
-    opacity: 0;
-    transform: translateY(-8px);
-    transition: all var(--transition);
-    backdrop-filter: blur(4px);
-  }
-  .cat-card:hover .cat-arrow { opacity: 1; transform: translateY(0); }
+  .categorias { padding: 120px 80px 0; }
+  .cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 64px; }
+  .cat-card { position: relative; overflow: hidden; border-radius: 4px; aspect-ratio: 3/4; cursor: none; }
+  .cat-bg { width: 100%; height: 100%; position: relative; }
+  .cat-bg img { width: 100%; height: 100%; object-fit: cover; position: absolute; }
+  .cat-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(58,48,40,0.7) 0%, transparent 60%); z-index: 1; }
+  .cat-content { position: absolute; bottom: 20px; left: 20px; z-index: 2; color: white; font-family: var(--font-corpo); font-size: 1.4rem; }
 
   /* ── NEWSLETTER ── */
-  .newsletter {
-    margin: 120px 80px;
-    background: var(--salvia);
-    border-radius: 4px;
-    padding: 80px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .newsletter::before {
-    content: '';
-    position: absolute;
-    width: 400px; height: 400px;
-    border-radius: 50%;
-    background: rgba(249,247,242,0.06);
-    right: -100px; bottom: -100px;
-  }
-  .newsletter-label {
-    font-family: var(--font-logo);
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--mostarda);
-    margin-bottom: 24px;
-  }
-  .newsletter h2 {
-    font-family: var(--font-corpo);
-    font-size: clamp(1.8rem, 3vw, 2.8rem);
-    font-weight: 400;
-    color: var(--offwhite);
-    line-height: 1.2;
-    margin-bottom: 16px;
-  }
-  .newsletter h2 em { font-style: italic; }
-  .newsletter p {
-    font-size: 0.92rem;
-    line-height: 1.7;
-    color: rgba(249,247,242,0.75);
-  }
-  .newsletter-form {
-    position: relative; z-index: 1;
-  }
-  .newsletter-form p {
-    font-size: 0.85rem;
-    color: rgba(249,247,242,0.65);
-    margin-bottom: 28px;
-    font-style: italic;
-  }
-  .input-group {
-    display: flex; gap: 0;
-    background: rgba(249,247,242,0.15);
-    border: 1px solid rgba(249,247,242,0.3);
-    border-radius: 2px;
-    overflow: hidden;
-    transition: border-color var(--transition);
-    margin-bottom: 16px;
-  }
-  .input-group:focus-within { border-color: var(--mostarda); }
-  .input-group input {
-    flex: 1;
-    background: transparent;
-    border: none;
-    padding: 18px 20px;
-    font-family: var(--font-corpo);
-    font-size: 0.92rem;
-    color: var(--offwhite);
-    outline: none;
-  }
-  .input-group input::placeholder { color: rgba(249,247,242,0.5); font-style: italic; }
-  .input-group button {
-    background: var(--mostarda);
-    color: var(--terra);
-    border: none;
-    padding: 18px 28px;
-    font-family: var(--font-logo);
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    cursor: none;
-    transition: background var(--transition);
-    white-space: nowrap;
-  }
-  .input-group button:hover { background: var(--offwhite); }
-  .newsletter-perks {
-    display: flex; gap: 20px;
-    flex-wrap: wrap;
-  }
-  .perk {
-    font-family: var(--font-logo);
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    color: rgba(249,247,242,0.7);
-    display: flex; align-items: center; gap: 6px;
-  }
-  .perk::before {
-    content: '✓';
-    color: var(--mostarda);
-    font-size: 0.75rem;
-  }
+  .newsletter { margin: 120px 80px; background: var(--salvia); border-radius: 4px; padding: 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; position: relative; overflow: hidden; }
+  .newsletter h2 { font-family: var(--font-corpo); font-size: clamp(1.8rem, 3vw, 2.8rem); color: var(--offwhite); }
 
   /* ── FOOTER ── */
-  footer {
-    background: var(--terra);
-    padding: 80px;
-    color: rgba(249,247,242,0.7);
-  }
-  .footer-top {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 64px;
-    margin-bottom: 64px;
-    padding-bottom: 64px;
-    border-bottom: 1px solid rgba(249,247,242,0.1);
-  }
-  .footer-brand .logo-footer {
-    font-family: var(--font-logo);
-    font-size: 1.4rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    color: var(--offwhite);
-    margin-bottom: 20px;
-    display: block;
-  }
-  .footer-brand p {
-    font-size: 0.88rem;
-    line-height: 1.75;
-    margin-bottom: 28px;
-  }
-  .footer-social {
-    display: flex; gap: 12px;
-  }
-  .social-btn {
-    width: 36px; height: 36px;
-    background: rgba(249,247,242,0.08);
-    border-radius: 2px;
-    display: flex; align-items: center; justify-content: center;
-    color: rgba(249,247,242,0.6);
-    text-decoration: none;
-    transition: all var(--transition);
-    font-size: 0.75rem;
-  }
-  .social-btn:hover { background: var(--argila); color: var(--terra); }
-  .footer-col h4 {
-    font-family: var(--font-logo);
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--mostarda);
-    margin-bottom: 24px;
-  }
-  .footer-col ul { list-style: none; }
-  .footer-col li { margin-bottom: 12px; }
-  .footer-col a {
-    font-size: 0.88rem;
-    color: rgba(249,247,242,0.55);
-    text-decoration: none;
-    transition: color var(--transition);
-    font-style: italic;
-  }
-  .footer-col a:hover { color: var(--argila); }
-  .footer-bottom {
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .footer-copy {
-    font-size: 0.78rem;
-    font-style: italic;
-  }
-  .footer-loc {
-    font-family: var(--font-logo);
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(249,247,242,0.35);
-    display: flex; align-items: center; gap: 8px;
-  }
-  .footer-loc::before { content: '◉'; color: var(--salvia); font-size: 0.6rem; }
+  footer { background: var(--terra); padding: 80px; color: rgba(249,247,242,0.7); }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 64px; margin-bottom: 64px; padding-bottom: 64px; border-bottom: 1px solid rgba(249,247,242,0.1); }
+  .footer-copy { font-size: 0.78rem; font-style: italic; }
 
   /* ── SCROLL REVEAL ── */
-  .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
   /* ── FLOATING CART ── */
-  .floating-cart {
-    position: fixed;
-    bottom: 32px; right: 32px;
-    z-index: 200;
-    display: none;
-  }
+  .floating-cart { position: fixed; bottom: 32px; right: 32px; z-index: 200; display: none; }
   .floating-cart.show { display: block; }
-  .floating-cart-btn {
-    width: 56px; height: 56px;
-    background: var(--terra);
-    border: none; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    cursor: none;
-    box-shadow: 0 8px 30px rgba(107,79,58,0.3);
-    transition: all var(--transition);
-    position: relative;
-  }
-  .floating-cart-btn:hover { background: var(--salvia); transform: scale(1.1); }
-  .floating-cart-badge {
-    position: absolute; top: -4px; right: -4px;
-    width: 20px; height: 20px;
-    background: var(--mostarda);
-    color: var(--terra);
-    border-radius: 50%;
-    font-family: var(--font-logo);
-    font-size: 0.65rem;
-    font-weight: 700;
-    display: flex; align-items: center; justify-content: center;
-  }
+  .floating-cart-btn { width: 56px; height: 56px; background: var(--terra); border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: none; }
 
   /* POPUP CARRINHO */
-  .cart-popup {
-    position: fixed; inset: 0; z-index: 300;
-    display: none;
-  }
+  .cart-popup { position: fixed; inset: 0; z-index: 300; display: none; }
   .cart-popup.open { display: flex; }
-  .cart-backdrop {
-    position: absolute; inset: 0;
-    background: rgba(58,48,40,0.5);
-    backdrop-filter: blur(4px);
-  }
-  .cart-panel {
-    position: absolute; right: 0; top: 0; bottom: 0;
-    width: 420px;
-    background: var(--offwhite);
-    padding: 48px 40px;
-    overflow-y: auto;
-    transform: translateX(100%);
-    transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
-    display: flex; flex-direction: column;
-  }
+  .cart-backdrop { position: absolute; inset: 0; background: rgba(58,48,40,0.5); backdrop-filter: blur(4px); }
+  .cart-panel { position: absolute; right: 0; top: 0; bottom: 0; width: 420px; background: var(--offwhite); padding: 48px 40px; overflow-y: auto; transform: translateX(100%); transition: transform 0.4s ease; display: flex; flex-direction: column; }
   .cart-popup.open .cart-panel { transform: translateX(0); }
-  .cart-panel h2 {
-    font-family: var(--font-corpo);
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: var(--terra);
-    margin-bottom: 32px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .cart-close {
-    background: none; border: none; cursor: none;
-    font-size: 1.2rem; color: var(--texto-leve);
-    transition: color var(--transition);
-  }
-  .cart-close:hover { color: var(--terra); }
-  .cart-items { flex: 1; }
-  .cart-item {
-    display: flex; gap: 16px;
-    padding: 20px 0;
-    border-bottom: 1px solid var(--cinza-suave);
-  }
-  .cart-item-img {
-    width: 70px; height: 90px;
-    border-radius: 2px;
-    flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-    background: var(--cinza-suave);
-  }
-  .cart-item-info { flex: 1; }
-  .cart-item-name {
-    font-family: var(--font-corpo);
-    font-size: 0.92rem;
-    color: var(--terra);
-    margin-bottom: 4px;
-  }
-  .cart-item-age {
-    font-family: var(--font-logo);
-    font-size: 0.7rem;
-    color: var(--texto-leve);
-    margin-bottom: 12px;
-    letter-spacing: 0.05em;
-  }
-  .cart-item-qty {
-    display: flex; align-items: center; gap: 10px;
-  }
-  .qty-btn {
-    width: 24px; height: 24px;
-    background: var(--cinza-suave);
-    border: none; cursor: none;
-    border-radius: 2px;
-    font-family: var(--font-logo);
-    font-weight: 600;
-    color: var(--terra);
-    display: flex; align-items: center; justify-content: center;
-    transition: background var(--transition);
-    font-size: 0.9rem;
-    line-height: 1;
-  }
-  .qty-btn:hover { background: var(--argila); }
-  .qty-num { font-family: var(--font-logo); font-size: 0.88rem; color: var(--terra); min-width: 16px; text-align: center; }
-  .cart-item-price { font-family: var(--font-corpo); color: var(--terra); font-size: 0.95rem; align-self: flex-start; }
-  .cart-footer { padding-top: 24px; }
-  .cart-total {
-    display: flex; justify-content: space-between; align-items: center;
-    margin-bottom: 24px;
-    font-family: var(--font-corpo);
-    font-size: 1.1rem;
-    color: var(--terra);
-    font-weight: 500;
-  }
-  .cart-total span { font-style: italic; color: var(--texto-leve); font-size: 0.85rem; }
-  .btn-checkout {
-    width: 100%;
-    background: var(--terra);
-    color: var(--offwhite);
-    border: none;
-    padding: 18px;
-    font-family: var(--font-logo);
-    font-size: 0.82rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    cursor: none;
-    border-radius: 2px;
-    transition: background var(--transition);
-    margin-bottom: 12px;
-  }
-  .btn-checkout:hover { background: var(--salvia); }
-  .cart-empty {
-    text-align: center;
-    padding: 80px 20px;
-  }
-  .cart-empty p {
-    font-family: var(--font-corpo);
-    font-style: italic;
-    color: var(--texto-leve);
-    font-size: 1rem;
-    line-height: 1.7;
-  }
-  .cart-note {
-    font-size: 0.75rem;
-    text-align: center;
-    color: var(--texto-leve);
-    font-style: italic;
-  }
 
   /* TOAST */
-  .toast {
-    position: fixed;
-    bottom: 32px; left: 50%;
-    transform: translateX(-50%) translateY(20px);
-    background: var(--terra);
-    color: var(--offwhite);
-    padding: 14px 28px;
-    border-radius: 2px;
-    font-family: var(--font-logo);
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    opacity: 0;
-    transition: all 0.4s ease;
-    z-index: 500;
-    pointer-events: none;
-    border-left: 3px solid var(--salvia);
-  }
+  .toast { position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--terra); color: var(--offwhite); padding: 14px 28px; border-radius: 2px; font-family: var(--font-logo); font-size: 0.8rem; opacity: 0; transition: all 0.4s ease; z-index: 500; border-left: 3px solid var(--salvia); }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
   @media (max-width: 1024px) {
-    nav { padding: 18px 32px; }
     .nav-links { display: none; }
     .hero { grid-template-columns: 1fr; }
     .hero-right { display: none; }
-    .hero-left { padding: 60px 32px; }
-    .colecao, .depoimentos, .tecidos, .categorias { padding-left: 32px; padding-right: 32px; }
-    .manifesto { padding: 80px 32px; }
-    .manifesto-pillars { grid-template-columns: 1fr; }
-    .pillar { border-right: none; border-bottom: 1px solid rgba(217,174,148,0.1); }
-    .destaque { margin: 0 32px 80px; grid-template-columns: 1fr; }
     .products-grid { grid-template-columns: repeat(2, 1fr); }
     .cat-grid { grid-template-columns: 1fr 1fr; }
-    .cat-card.large { grid-row: auto; }
-    .newsletter { margin: 80px 32px; padding: 48px; grid-template-columns: 1fr; gap: 40px; }
-    footer { padding: 48px 32px; }
-    .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
-    .tecidos-grid { grid-template-columns: 1fr; }
-    .depoimentos-grid { grid-template-columns: 1fr; }
-    .section-header { flex-direction: column; align-items: flex-start; gap: 20px; }
-    .destaque-content { padding: 48px 40px; }
   }
 </style>
 </head>
@@ -1320,614 +414,158 @@
 <div class="cursor-ring" id="cursorRing"></div>
 
 <nav>
-  <a href="#" class="logo">lúdica<span>®</span></a>
+  <a href="#" class="logo">
+    <img src="1.png" alt="Lúdica Logo">
+  </a>
   <ul class="nav-links">
     <li><a href="#colecao">Coleção</a></li>
     <li><a href="#sobre">Manifesto</a></li>
     <li><a href="#tecidos">Tecidos</a></li>
     <li><a href="#categorias">Categorias</a></li>
-    <li><a href="#newsletter">Novidades</a></li>
   </ul>
   <div class="nav-actions">
-    <button class="cart-btn" onclick="openCart()" style="position:relative">
-      <span>Carrinho (0)</span>
-      <span class="cart-badge" id="navBadge" style="display:none">0</span>
-    </button>
+    <button class="cart-btn" onclick="openCart()">Carrinho (0)</button>
   </div>
 </nav>
 
 <section class="hero">
   <div class="hero-left">
     <div class="hero-eyebrow">Nova coleção — Outono 2025</div>
-    <h1 class="hero-title">
-      Roupas que<br>
-      <em>respeitam</em><br>
-      o brincar.
-    </h1>
-    <p class="hero-subtitle">
-      Peças em tecidos orgânicos certificados, pensadas para o movimento livre e o crescimento saudável. Sem estampas excessivas, sem restrições de gênero — só conforto, durabilidade e um design que dura além das estações.
-    </p>
+    <h1 class="hero-title">Roupas que<br><em>respeitam</em><br>o brincar.</h1>
+    <p class="hero-subtitle">Peças em tecidos orgânicos certificados, pensadas para o movimento livre e o crescimento saudável. Durabilidade e design que dura além das estações.</p>
     <div class="hero-ctas">
       <a href="#colecao" class="btn-primary">Ver Coleção</a>
       <a href="#sobre" class="btn-outline">Nossa História</a>
     </div>
   </div>
   <div class="hero-right">
-    <div class="hero-img-placeholder">
-      <div class="hero-shape-1"></div>
-      <div class="hero-shape-2"></div>
-      <div class="hero-shape-3"></div>
-      <div class="hero-product-card">
-        <div class="hero-product-img">
-          <img src="2.png" alt="Macacão Amendoim">
-        </div>
-        <div class="hero-product-name">Macacão Amendoim</div>
-        <div class="hero-product-price">R$ 189,00</div>
-      </div>
-      <div class="hero-tag">♻ Orgânico · Gots</div>
-    </div>
+    <img src="2.png" alt="Destaque Lúdica" class="hero-full-img">
+    <div class="hero-tag">♻ Orgânico · Gots</div>
   </div>
 </section>
 
 <section class="manifesto" id="sobre">
   <div class="manifesto-inner">
     <div class="manifesto-label">Nosso Manifesto</div>
-    <h2>
-      A infância merece roupas<br>
-      tão <em>livres</em> quanto ela.
-    </h2>
-    <p>A Lúdica nasceu em Curitiba com uma crença simples: a roupa infantil não precisa gritar para ser bonita. Ela não precisa definir quem a criança é, nem impor o que ela deve gostar. Ela precisa apenas — e profundamente — não atrapalhar.</p>
-    <p>Criamos peças para bebês e crianças de 0 a 6 anos que honram a atividade de brincar: tecidos que respiram, costuras que não irritam, cores que não cansam. Slow fashion não como tendência, mas como compromisso com o planeta que nossos filhos vão herdar.</p>
+    <h2>A infância merece roupas tão <em>livres</em> quanto ela.</h2>
+    <p>A Lúdica nasceu em Curitiba com uma crença simples: a roupa infantil não precisa gritar para ser bonita. Criamos peças para bebês e crianças de 0 a 6 anos que honram a atividade de brincar.</p>
   </div>
   <div class="manifesto-pillars">
-    <div class="pillar">
-      <svg class="pillar-icon" viewBox="0 0 44 44" fill="none" stroke="#D9AE94" stroke-width="1.5">
-        <circle cx="22" cy="22" r="18"/>
-        <path d="M22 10 C16 14 14 20 18 24 C22 28 26 26 22 32"/>
-        <path d="M15 18 C13 22 15 26 22 26"/>
-      </svg>
-      <h3>Tecido Orgânico</h3>
-      <p>100% algodão orgânico certificado GOTS. Cultivado sem agrotóxicos, processado sem substâncias nocivas. Macio para a pele mais sensível, durável para os mais aventureiros.</p>
-    </div>
-    <div class="pillar">
-      <svg class="pillar-icon" viewBox="0 0 44 44" fill="none" stroke="#D9AE94" stroke-width="1.5">
-        <path d="M8 36 L22 8 L36 36 Z"/>
-        <path d="M14 28 L30 28"/>
-        <circle cx="22" cy="20" r="3"/>
-      </svg>
-      <h3>Sem Gênero</h3>
-      <p>Nossas peças são criadas para crianças, não para rótulos. Cores e cortes pensados para qualquer criança usar com liberdade total de se expressar.</p>
-    </div>
-    <div class="pillar">
-      <svg class="pillar-icon" viewBox="0 0 44 44" fill="none" stroke="#D9AE94" stroke-width="1.5">
-        <path d="M22 6 C14 6 8 12 8 22 C8 30 14 38 22 38 C30 38 36 30 36 22"/>
-        <path d="M30 6 C36 10 38 16 36 22"/>
-        <path d="M22 16 L22 22 L28 26"/>
-      </svg>
-      <h3>Atemporal</h3>
-      <p>Design que não segue estações. Compramos menos, usamos mais, passamos para os próximos. Cada peça Lúdica é feita para durar além da infância — e das tendências.</p>
-    </div>
+    <div class="pillar"><h3>Tecido Orgânico</h3><p>100% algodão orgânico certificado GOTS. Macio para a pele mais sensível.</p></div>
+    <div class="pillar"><h3>Sem Gênero</h3><p>Cores e cortes pensados para qualquer criança usar com liberdade.</p></div>
+    <div class="pillar"><h3>Atemporal</h3><p>Design que não segue estações. Feito para durar além da infância.</p></div>
   </div>
 </section>
 
 <section class="colecao" id="colecao">
   <div class="section-header reveal">
-    <div>
-      <div class="section-label">Outono · Inverno 2025</div>
-      <h2 class="section-title">A coleção <em>Terra</em></h2>
-    </div>
-    <a href="#" class="section-link">Ver tudo →</a>
+    <div><div class="section-label">Outono · Inverno 2025</div><h2 class="section-title">A coleção <em>Terra</em></h2></div>
   </div>
   <div class="products-grid">
-
     <div class="product-card reveal">
-      <div class="product-img-wrap">
-        <div class="product-img-bg">
-          <img src="2.png" alt="Macacão Amendoim">
-          <div class="product-actions">
-            <button class="btn-add" onclick="addToCart('Macacão Amendoim','R$ 189,00','bg-argila')">+ Adicionar</button>
-            <button class="btn-wish">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6B4F3A" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </button>
-          </div>
-        </div>
-        <div class="product-badge">Novo</div>
-      </div>
-      <div class="product-info">
-        <div class="product-category">Bodies</div>
-        <div class="product-name">Macacão Amendoim</div>
-        <div class="product-age">3 a 24 meses</div>
-        <div class="product-footer">
-          <div class="product-price">R$ 189,00</div>
-          <div class="product-colors">
-            <div class="color-dot" style="background:#D9AE94"></div>
-            <div class="color-dot" style="background:#8A9A5B"></div>
-            <div class="color-dot" style="background:#E2B04B"></div>
-          </div>
-        </div>
-      </div>
+      <div class="product-img-wrap"><div class="product-img-bg"><img src="2.png" alt="Macacão Amendoim"></div></div>
+      <div class="product-info"><div class="product-name">Macacão Amendoim</div><div class="product-price">R$ 189,00</div></div>
+      <button class="btn-add" onclick="addToCart('Macacão Amendoim','R$ 189,00','bg-argila')">+ Adicionar</button>
     </div>
-
     <div class="product-card reveal">
-      <div class="product-img-wrap">
-        <div class="product-img-bg">
-          <img src="2.png" alt="Conjunto Bosque">
-          <div class="product-actions">
-            <button class="btn-add" onclick="addToCart('Conjunto Bosque','R$ 245,00','bg-salvia')">+ Adicionar</button>
-            <button class="btn-wish">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6B4F3A" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="product-info">
-        <div class="product-category">Conjuntos</div>
-        <div class="product-name">Conjunto Bosque</div>
-        <div class="product-age">1 a 4 anos</div>
-        <div class="product-footer">
-          <div class="product-price">R$ 245,00</div>
-          <div class="product-colors">
-            <div class="color-dot" style="background:#8A9A5B"></div>
-            <div class="color-dot" style="background:#3A3028"></div>
-          </div>
-        </div>
-      </div>
+      <div class="product-img-wrap"><div class="product-img-bg"><img src="3.png" alt="Conjunto Bosque"></div></div>
+      <div class="product-info"><div class="product-name">Conjunto Bosque</div><div class="product-price">R$ 245,00</div></div>
+      <button class="btn-add" onclick="addToCart('Conjunto Bosque','R$ 245,00','bg-salvia')">+ Adicionar</button>
     </div>
-
     <div class="product-card reveal">
-      <div class="product-img-wrap">
-        <div class="product-img-bg">
-          <img src="3.png" alt="Blusa Sementes">
-          <div class="product-actions">
-            <button class="btn-add" onclick="addToCart('Blusa Sementes','R$ 139,00','bg-mostarda')">+ Adicionar</button>
-            <button class="btn-wish">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6B4F3A" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </button>
-          </div>
-        </div>
-        <div class="product-badge" style="background:var(--salvia);color:white">-15%</div>
-      </div>
-      <div class="product-info">
-        <div class="product-category">Blusas</div>
-        <div class="product-name">Blusa Sementes</div>
-        <div class="product-age">2 a 6 anos</div>
-        <div class="product-footer">
-          <div class="product-price">
-            <span class="original">R$ 165,00</span>R$ 139,00
-          </div>
-          <div class="product-colors">
-            <div class="color-dot" style="background:#E2B04B"></div>
-            <div class="color-dot" style="background:#F9F7F2"></div>
-          </div>
-        </div>
-      </div>
+      <div class="product-img-wrap"><div class="product-img-bg"><img src="4.png" alt="Blusa Sementes"></div></div>
+      <div class="product-info"><div class="product-name">Blusa Sementes</div><div class="product-price">R$ 139,00</div></div>
+      <button class="btn-add" onclick="addToCart('Blusa Sementes','R$ 139,00','bg-mostarda')">+ Adicionar</button>
     </div>
-
     <div class="product-card reveal">
-      <div class="product-img-wrap">
-        <div class="product-img-bg">
-          <img src="4.png" alt="Calça Raiz">
-          <div class="product-actions">
-            <button class="btn-add" onclick="addToCart('Calça Raiz','R$ 168,00','bg-terra')">+ Adicionar</button>
-            <button class="btn-wish">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F9F7F2" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="product-info">
-        <div class="product-category">Calças</div>
-        <div class="product-name">Calça Raiz</div>
-        <div class="product-age">6 meses a 5 anos</div>
-        <div class="product-footer">
-          <div class="product-price">R$ 168,00</div>
-          <div class="product-colors">
-            <div class="color-dot" style="background:#6B4F3A"></div>
-            <div class="color-dot" style="background:#3A3028"></div>
-            <div class="color-dot" style="background:#8A9A5B"></div>
-          </div>
-        </div>
-      </div>
+      <div class="product-img-wrap"><div class="product-img-bg"><img src="5.png" alt="Calça Raiz"></div></div>
+      <div class="product-info"><div class="product-name">Calça Raiz</div><div class="product-price">R$ 168,00</div></div>
+      <button class="btn-add" onclick="addToCart('Calça Raiz','R$ 168,00','bg-terra')">+ Adicionar</button>
     </div>
-
   </div>
 </section>
 
 <div class="destaque reveal">
-  <div class="destaque-img">
-    <img src="5.png" alt="Kit Ninho">
-  </div>
+  <div class="destaque-img"><img src="6.png" alt="Kit Ninho"></div>
   <div class="destaque-content">
     <div class="section-label">Peça da Estação</div>
     <h2>Kit Recém-Nascido <em>Ninho</em></h2>
-    <p>Desenvolvido especialmente para os primeiros dias de vida. Três peças em musselina orgânica dupla — o tecido mais macio que existe. Inclui body, calça e chapéuzinho, todos com costuras externas e sem elástico na cintura. Uma oferta pensada para os pais que querem dar o melhor desde o início.</p>
-    <div class="destaque-price">R$ 329,00 <span>· Frete grátis para Curitiba</span></div>
-    <button class="btn-primary" onclick="addToCart('Kit Ninho (3 peças)','R$ 329,00','bg-offwhite'); return false;">
-      Adicionar ao carrinho
-    </button>
+    <p>Três peças em musselina orgânica dupla. Inclui body, calça e chapéuzinho.</p>
+    <button class="btn-primary" onclick="addToCart('Kit Ninho','R$ 329,00','bg-offwhite')">Adicionar ao carrinho</button>
   </div>
 </div>
 
-<section class="tecidos" id="tecidos">
-  <div class="section-header reveal">
-    <div>
-      <div class="section-label">Matéria-prima</div>
-      <h2 class="section-title">Tecidos que <em>importam</em></h2>
-    </div>
-  </div>
-  <div class="tecidos-grid reveal">
-    <div class="tecido-item featured">
-      <svg class="tecido-icon" viewBox="0 0 48 48" fill="none">
-        <circle cx="24" cy="24" r="20" stroke="#6B4F3A" stroke-width="1.5"/>
-        <path d="M24 12 C18 16 16 22 20 26 C24 30 28 28 24 36" stroke="#6B4F3A" stroke-width="1.5"/>
-        <path d="M16 22 C14 26 16 30 24 30" stroke="#6B4F3A" stroke-width="1.5"/>
-      </svg>
-      <h3>Algodão Orgânico Certificado</h3>
-      <p>A base de tudo o que fazemos. Cultivado sem pesticidas, tingido com corantes azo-free, certificado pelo padrão GOTS (Global Organic Textile Standard). Hipoalergênico, respirável e suave como precisa ser para a pele de um bebê.</p>
-      <div class="tecido-cert">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A9A5B" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-        Certificação GOTS · OEKO-TEX Standard 100
-      </div>
-    </div>
-    <div class="tecido-item">
-      <svg class="tecido-icon" viewBox="0 0 48 48" fill="none">
-        <path d="M8 40 C8 30 16 24 24 24 C32 24 40 18 40 8" stroke="#8A9A5B" stroke-width="1.5"/>
-        <path d="M14 40 C14 32 20 28 28 30 C36 32 44 26 44 16" stroke="#D9AE94" stroke-width="1.5" stroke-dasharray="3 3"/>
-      </svg>
-      <h3>Musselina Dupla</h3>
-      <p>Duas camadas de tecido leve que criam uma barreira de ar natural. Ideal para recém-nascidos e primeiros meses. Fica mais macia a cada lavagem.</p>
-    </div>
-    <div class="tecido-item">
-      <svg class="tecido-icon" viewBox="0 0 48 48" fill="none">
-        <rect x="8" y="8" width="32" height="32" rx="4" stroke="#E2B04B" stroke-width="1.5"/>
-        <path d="M8 20 L40 20 M8 28 L40 28 M20 8 L20 40 M28 8 L28 40" stroke="#E2B04B" stroke-width="1" opacity="0.5"/>
-      </svg>
-      <h3>Ribana & Moletom</h3>
-      <p>Para peças que exigem elasticidade e conforto em movimentos maiores. Punhos e barras em ribana que não marcam nem constrangem o crescimento.</p>
-    </div>
-  </div>
-</section>
-
 <section class="categorias" id="categorias">
-  <div class="section-header reveal">
-    <div>
-      <div class="section-label">Explorar</div>
-      <h2 class="section-title">Por <em>categoria</em></h2>
-    </div>
-    <a href="#" class="section-link">Ver todas →</a>
-  </div>
   <div class="cat-grid">
-    <div class="cat-card large reveal">
-      <div class="cat-bg">
-        <img src="6.png" alt="Bodies & Macacões">
-        <div class="cat-overlay"></div>
-      </div>
-      <div class="cat-content">
-        <div class="cat-name">Bodies & Macacões</div>
-        <div class="cat-count">0 a 24 meses · 18 peças</div>
-      </div>
-      <div class="cat-arrow">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </div>
-    </div>
-    <div class="cat-card reveal">
-      <div class="cat-bg">
-        <img src="7.png" alt="Conjuntos">
-        <div class="cat-overlay"></div>
-      </div>
-      <div class="cat-content">
-        <div class="cat-name">Conjuntos</div>
-        <div class="cat-count">1 a 6 anos · 12 peças</div>
-      </div>
-      <div class="cat-arrow">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </div>
-    </div>
-    <div class="cat-card reveal">
-      <div class="cat-bg">
-        <img src="8.png" alt="Blusas & Camisetas">
-        <div class="cat-overlay"></div>
-      </div>
-      <div class="cat-content">
-        <div class="cat-name">Blusas & Camisetas</div>
-        <div class="cat-count">2 a 6 anos · 10 peças</div>
-      </div>
-      <div class="cat-arrow">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </div>
-    </div>
-    <div class="cat-card reveal">
-      <div class="cat-bg">
-        <img src="9.png" alt="Calças & Shorts">
-        <div class="cat-overlay"></div>
-      </div>
-      <div class="cat-content">
-        <div class="cat-name">Calças & Shorts</div>
-        <div class="cat-count">6m a 5 anos · 9 peças</div>
-      </div>
-      <div class="cat-arrow">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="depoimentos" id="depoimentos">
-  <div class="depoimentos-inner">
-    <div class="section-label reveal" style="margin-bottom:0">O que as famílias dizem</div>
-    <h2 class="section-title reveal" style="margin-top:16px">Histórias de <em>quem usa</em></h2>
-  </div>
-  <div class="depoimentos-grid">
-    <div class="depoimento-card reveal">
-      <div class="stars">★★★★★</div>
-      <div class="depoimento-texto">"Finalmente uma marca que não precisa gritar para chamar atenção. As peças são lindas, duráveis e a minha filha ama a liberdade de movimento. Já passei tudo para minha sobrinha depois."</div>
-      <div class="depoimento-autor">
-        <div class="autor-avatar">CL</div>
-        <div>
-          <div class="autor-nome">Camila L.</div>
-          <div class="autor-info">Mãe da Sofia, 2 anos · Curitiba</div>
-        </div>
-      </div>
-    </div>
-    <div class="depoimento-card reveal">
-      <div class="stars">★★★★★</div>
-      <div class="depoimento-texto">"Comprei o kit recém-nascido para o meu bebê e a qualidade é impressionante. Lavei dezenas de vezes e a maciez não mudou. Vale cada centavo — e sei que vai para o próximo."</div>
-      <div class="depoimento-autor">
-        <div class="autor-avatar" style="background:linear-gradient(135deg,#8A9A5B,#3A3028)">RT</div>
-        <div>
-          <div class="autor-nome">Rafael e Tatiana</div>
-          <div class="autor-info">Pais do Theo, 4 meses · Curitiba</div>
-        </div>
-      </div>
-    </div>
-    <div class="depoimento-card reveal">
-      <div class="stars">★★★★★</div>
-      <div class="depoimento-texto">"Sou contra moda infantil excessiva há anos, e a Lúdica é exatamente o que eu buscava. Design simples, sem gênero, tecido honesto. Meu filho de 4 anos escolhe sempre as peças Lúdica para brincar."</div>
-      <div class="depoimento-autor">
-        <div class="autor-avatar" style="background:linear-gradient(135deg,#E2B04B,#D9AE94)">MF</div>
-        <div>
-          <div class="autor-nome">Mariana F.</div>
-          <div class="autor-info">Mãe do Pedro, 4 anos · São Paulo</div>
-        </div>
-      </div>
-    </div>
-    <div class="depoimento-card reveal">
-      <div class="stars">★★★★★</div>
-      <div class="depoimento-texto">"A embalagem é quase um presente por si só. Apresentei para minha curadoria de presentes sustentáveis e foi a mais requisitada da lista. O atendimento de Curitiba é impecável, entrega rápida."</div>
-      <div class="depoimento-autor">
-        <div class="autor-avatar" style="background:linear-gradient(135deg,#6B4F3A,#8A9A5B)">JM</div>
-        <div>
-          <div class="autor-nome">Juliana M.</div>
-          <div class="autor-info">Curadora de presentes · Curitiba</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="newsletter" id="newsletter">
-  <div class="reveal">
-    <div class="newsletter-label">Clube Lúdica</div>
-    <h2>Receba antes<br>de todo mundo.</h2>
-    <p>Lançamentos, histórias de bastidores e acesso antecipado às coleções. Sem spam — prometemos.</p>
-  </div>
-  <div class="newsletter-form reveal">
-    <p>Junte-se às 2.400+ famílias que já recebem</p>
-    <div class="input-group">
-      <input type="email" placeholder="seu@email.com">
-      <button type="button">Assinar</button>
-    </div>
-    <div class="newsletter-perks">
-      <span class="perk">10% na primeira compra</span>
-      <span class="perk">Frete grátis Curitiba</span>
-      <span class="perk">Acesso antecipado</span>
-    </div>
+    <div class="cat-card reveal"><div class="cat-bg"><img src="6.png" alt="Bodies"></div><div class="cat-overlay"></div><div class="cat-content">Bodies</div></div>
+    <div class="cat-card reveal"><div class="cat-bg"><img src="7.png" alt="Conjuntos"></div><div class="cat-overlay"></div><div class="cat-content">Conjuntos</div></div>
+    <div class="cat-card reveal"><div class="cat-bg"><img src="8.png" alt="Blusas"></div><div class="cat-overlay"></div><div class="cat-content">Blusas</div></div>
+    <div class="cat-card reveal"><div class="cat-bg"><img src="9.png" alt="Calças"></div><div class="cat-overlay"></div><div class="cat-content">Calças</div></div>
   </div>
 </section>
 
 <footer>
   <div class="footer-top">
-    <div class="footer-brand">
-      <span class="logo-footer">lúdica</span>
-      <p>Vestuário infantil consciente, feito com tecidos orgânicos certificados. Para crianças de 0 a 6 anos que merecem brincar com liberdade.</p>
-      <div class="footer-social">
-        <a href="#" class="social-btn">ig</a>
-        <a href="#" class="social-btn">tk</a>
-        <a href="#" class="social-btn">pi</a>
-      </div>
-    </div>
-    <div class="footer-col">
-      <h4>Loja</h4>
-      <ul>
-        <li><a href="#">Todos os produtos</a></li>
-        <li><a href="#">Recém-nascido (0–3m)</a></li>
-        <li><a href="#">Bebê (3–24m)</a></li>
-        <li><a href="#">Criança (1–6 anos)</a></li>
-        <li><a href="#">Kits & Presentes</a></li>
-        <li><a href="#">Sale</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Marca</h4>
-      <ul>
-        <li><a href="#">Nossa história</a></li>
-        <li><a href="#">Manifesto</a></li>
-        <li><a href="#">Tecidos & Certificações</a></li>
-        <li><a href="#">Slow Fashion</a></li>
-        <li><a href="#">Programa Repassa</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Ajuda</h4>
-      <ul>
-        <li><a href="#">Guia de tamanhos</a></li>
-        <li><a href="#">Trocas & devoluções</a></li>
-        <li><a href="#">Perguntas frequentes</a></li>
-        <li><a href="#">Contato</a></li>
-        <li><a href="#">Revenda</a></li>
-      </ul>
-    </div>
+    <div class="footer-brand"><span class="logo-footer">lúdica</span><p>Vestuário infantil consciente em Curitiba.</p></div>
   </div>
-  <div class="footer-bottom">
-    <div class="footer-copy">© 2025 Lúdica. <em>Feito com cuidado em Curitiba.</em></div>
-    <div class="footer-loc">Curitiba, Paraná · Brasil</div>
-  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2026 Lúdica.</div></div>
 </footer>
 
-<div class="floating-cart" id="floatingCart">
-  <button class="floating-cart-btn" onclick="openCart()">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-    <span class="floating-cart-badge" id="floatBadge">0</span>
-  </button>
-</div>
+<div class="floating-cart" id="floatingCart"><button class="floating-cart-btn" onclick="openCart()">🛒</button></div>
 
 <div class="cart-popup" id="cartPopup">
   <div class="cart-backdrop" onclick="closeCart()"></div>
-  <div class="cart-panel" id="cartPanel">
-    <h2>
-      Carrinho
-      <button class="cart-close" onclick="closeCart()">✕</button>
-    </h2>
-    <div class="cart-items" id="cartItems">
-      <div class="cart-empty">
-        <p>Seu carrinho está vazio.<br>Que tal começar com o que a natureza tem de melhor?</p>
-      </div>
-    </div>
-    <div class="cart-footer" id="cartFooter" style="display:none">
-      <div class="cart-total">
-        <div>Total</div>
-        <div id="cartTotal">R$ 0,00 <span>(frete a calcular)</span></div>
-      </div>
-      <button class="btn-checkout">Finalizar compra →</button>
-      <div class="cart-note">Frete grátis para Curitiba · Troca garantida em 30 dias</div>
-    </div>
+  <div class="cart-panel">
+    <h2>Carrinho <button onclick="closeCart()">✕</button></h2>
+    <div id="cartItems"><div class="cart-empty"><p>Seu carrinho está vazio.</p></div></div>
   </div>
 </div>
 
-<div class="toast" id="toast">Produto adicionado ao carrinho ✓</div>
+<div class="toast" id="toast">Adicionado ✓</div>
 
 <script>
-// Cursor
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursorRing');
 let mx = 0, my = 0, rx = 0, ry = 0;
 
 document.addEventListener('mousemove', e => {
   mx = e.clientX; my = e.clientY;
-  cursor.style.left = mx + 'px';
-  cursor.style.top = my + 'px';
+  cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
 });
 
 function animRing() {
-  rx += (mx - rx) * 0.12;
-  ry += (my - ry) * 0.12;
-  ring.style.left = rx + 'px';
-  ring.style.top = ry + 'px';
+  rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
   requestAnimationFrame(animRing);
 }
 animRing();
 
-document.querySelectorAll('a, button, .product-card, .cat-card, .pillar, .depoimento-card').forEach(el => {
-  el.addEventListener('mouseenter', () => { cursor.classList.add('hovered'); ring.classList.add('hovered'); });
-  el.addEventListener('mouseleave', () => { cursor.classList.remove('hovered'); ring.classList.remove('hovered'); });
-});
-
-// Scroll Reveal
 const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver(entries => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('visible'), (i % 4) * 100);
-      observer.unobserve(e.target);
-    }
-  });
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
 }, { threshold: 0.1 });
 reveals.forEach(el => observer.observe(el));
 
-// Cart
 let cartItems = [];
-
-function addToCart(name, price, bg) {
-  const existing = cartItems.find(i => i.name === name);
-  if (existing) { existing.qty++; }
-  else { cartItems.push({ name, price, bg, qty: 1 }); }
-  updateCart();
-  showToast('Adicionado: ' + name);
+function addToCart(name, price) {
+  cartItems.push({ name, price });
   document.getElementById('floatingCart').classList.add('show');
+  const t = document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2000);
+  updateCart();
 }
 
 function updateCart() {
-  const count = cartItems.reduce((a, i) => a + i.qty, 0);
-  document.getElementById('navBadge').textContent = count;
-  document.getElementById('navBadge').style.display = count > 0 ? 'flex' : 'none';
-  document.querySelector('.cart-btn span').textContent = 'Carrinho (' + count + ')';
-  document.getElementById('floatBadge').textContent = count;
-
   const container = document.getElementById('cartItems');
-  const footer = document.getElementById('cartFooter');
-
-  if (cartItems.length === 0) {
-    container.innerHTML = '<div class="cart-empty"><p>Seu carrinho está vazio.<br>Que tal começar com o que a natureza tem de melhor?</p></div>';
-    footer.style.display = 'none';
-    return;
+  document.querySelector('.cart-btn').textContent = `Carrinho (${cartItems.length})`;
+  if (cartItems.length > 0) {
+    container.innerHTML = cartItems.map(i => `<div style="padding:10px;border-bottom:1px solid #eee">${i.name} - ${i.price}</div>`).join('');
   }
-
-  footer.style.display = 'block';
-  container.innerHTML = cartItems.map((item, idx) => `
-    <div class="cart-item">
-      <div class="cart-item-img">
-        <svg width="30" height="38" viewBox="0 0 60 80" fill="none" stroke="#6B4F3A" stroke-width="1.5" opacity="0.4">
-          <path d="M12 12 L6 26 L14 28 L14 68 L46 68 L46 28 L54 26 L48 12 C46 7 38 4 30 4 C22 4 14 7 12 12Z"/>
-        </svg>
-      </div>
-      <div class="cart-item-info">
-        <div class="cart-item-name">${item.name}</div>
-        <div class="cart-item-age">${item.price}</div>
-        <div class="cart-item-qty">
-          <button class="qty-btn" onclick="changeQty(${idx}, -1)">−</button>
-          <span class="qty-num">${item.qty}</span>
-          <button class="qty-btn" onclick="changeQty(${idx}, 1)">+</button>
-        </div>
-      </div>
-      <div class="cart-item-price">${item.price}</div>
-    </div>
-  `).join('');
-
-  const total = cartItems.reduce((a, item) => {
-    const v = parseFloat(item.price.replace('R$ ','').replace(',','.'));
-    return a + v * item.qty;
-  }, 0);
-  document.getElementById('cartTotal').innerHTML = 'R$ ' + total.toFixed(2).replace('.',',') + ' <span>(frete a calcular)</span>';
 }
 
-function changeQty(idx, delta) {
-  cartItems[idx].qty += delta;
-  if (cartItems[idx].qty <= 0) cartItems.splice(idx, 1);
-  updateCart();
-}
-
-function openCart() {
-  document.getElementById('cartPopup').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeCart() {
-  document.getElementById('cartPopup').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg + ' ✓';
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2800);
-}
-
-window.addEventListener('scroll', () => {
-  const nav = document.querySelector('nav');
-  if (window.scrollY > 80) nav.style.borderBottomColor = 'rgba(217,174,148,0.35)';
-  else nav.style.borderBottomColor = 'rgba(217,174,148,0.2)';
-});
+function openCart() { document.getElementById('cartPopup').classList.add('open'); }
+function closeCart() { document.getElementById('cartPopup').classList.remove('open'); }
 </script>
 </body>
 </html>
